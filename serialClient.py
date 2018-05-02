@@ -220,7 +220,7 @@ class MySerial(QMainWindow):
         self.statusbar.removeWidget(self.serialStateLBL)
         self.statusbar.removeWidget(self.sendStateLBL)
         self.statusbar.removeWidget(self.receiveStateLBL)
-        if self.mySerial.is_open:
+        if self.mySerial != None and self.mySerial.is_open:
             self.serialState = '已开'
         else:
             self.serialState = '关闭'
@@ -468,7 +468,7 @@ class MySerial(QMainWindow):
 
 
     def stopReceiveAction(self):
-        if self.mySerial != None and self.mySerial.is_open == False:
+        if self.mySerial == None or self.mySerial.is_open == False:
             return
         else:
             self.receiveTimer.stop()
